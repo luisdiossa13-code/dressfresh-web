@@ -1,0 +1,13 @@
+{
+  "name": "dressfresh-web",
+  "version": "0.1.0",
+  "description": "DressFresh - versión inicial de 4 módulos web (Catálogo, Usuarios, Carrito, PQRSF)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --no-warnings src/server.js",
+    "test": "node --no-warnings --test \"test/*.test.js\""
+  },
+  "engines": { "node": ">=22.5" },
+  "license": "UNLICENSED",
+  "dependencies": { "express": "^4.21.2" }
+}
