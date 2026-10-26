@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DressFresh — Versión inicial</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="barra">
+  <h1>DRESS<span>FRESH</span></h1>
+  <nav>
+    <a href="#catalogo" class="activo">Catálogo</a>
+    <a href="#carrito">Carrito <b id="contador">0</b></a>
+    <a href="#cuenta">Mi cuenta</a>
+    <a href="#pqrsf">PQRSF</a>
+  </nav>
+</header>
+<main>
+  <section id="catalogo" class="vista">
+    <h2>Catálogo</h2>
+    <form id="filtros" class="fila">
+      <input id="busqueda" type="search" placeholder="Buscar producto o marca" maxlength="60">
+      <select id="categoria"><option value="">Todas las categorías</option></select>
+      <label><input id="promo" type="checkbox"> Solo promociones</label>
+    </form>
+    <div id="productos" class="rejilla"></div>
+    <p class="pendiente">Pendiente: paginación, ordenamiento y detalle de producto.</p>
+  </section>
+
+  <section id="carrito" class="vista" hidden>
+    <h2>Carrito de compras</h2>
+    <div id="itemsCarrito"></div>
+    <p class="pendiente">Pendiente: pago y generación del pedido.</p>
+  </section>
+
+  <section id="cuenta" class="vista" hidden>
+    <h2>Mi cuenta</h2>
+    <div id="sesionActiva" hidden>
+      <p>Sesión iniciada como <b id="nombreUsuario"></b>.</p><button id="salir">Cerrar sesión</button>
+    </div>
+    <div id="formsCuenta" class="dos">
+      <form id="formLogin" novalidate>
+        <h3>Ingresar</h3>
+        <label>Correo<input name="correo" type="email" autocomplete="email"></label>
+        <label>Contraseña<input name="clave" type="password" autocomplete="current-password"></label>
+        <p class="error" data-error></p><button>Ingresar</button>
+      </form>
+      <form id="formRegistro" novalidate>
+        <h3>Crear cuenta</h3>
+        <label>Nombre<input name="nombre" maxlength="60" autocomplete="name"></label>
+        <label>Correo<input name="correo" type="email" autocomplete="email"></label>
+        <label>Contraseña (6 a 30)<input name="clave" type="password" autocomplete="new-password"></label>
+        <p class="error" data-error></p><button>Registrarme</button>
+      </form>
+    </div>
+    <p class="pendiente">Pendiente: editar perfil y recuperar contraseña.</p>
+  </section>
+
+  <section id="pqrsf" class="vista" hidden>
+    <h2>Peticiones, quejas, reclamos, sugerencias y felicitaciones</h2>
+    <form id="formPqrsf" novalidate>
+      <label>Tipo<select name="tipo">
+        <option value="">Selecciona…</option><option value="peticion">Petición</option><option value="queja">Queja</option>
+        <option value="reclamo">Reclamo</option><option value="sugerencia">Sugerencia</option><option value="felicitacion">Felicitación</option>
+      </select></label>
+      <label>Nombre<input name="nombre" maxlength="60"></label>
+      <label>Correo<input name="correo" type="email"></label>
+      <label>Mensaje<textarea name="mensaje" rows="4" maxlength="500"></textarea></label>
+      <p class="error" data-error></p><button>Enviar</button>
+      <p class="ok" id="okPqrsf"></p>
+    </form>
+    <p class="pendiente">Pendiente: panel del administrador para responder solicitudes.</p>
+  </section>
+</main>
+<div id="aviso" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body>
+</html>
