@@ -1,28 +1,34 @@
-# DressFresh Web — versión inicial de 4 módulos
+# DressFresh Web - módulos integrados
 
-Aplicación web (Node.js + Express + SQLite) con el **inicio** de los módulos:
-**Catálogo**, **Cuentas de usuario**, **Carrito de compras** y **PQRSF**.
-Cada módulo tiene capas: `routes` (API) → `service` (reglas) → `repository` (SQL).
+Tienda virtual de moda multimarca. Esta versión integra cuatro módulos que comparten base de datos, sesión, validaciones y manejo de errores:
+
+| Módulo | Qué hace |
+|---|---|
+| Catálogo | Lista, busca y filtra productos |
+| Cuentas de usuario | Registro, inicio de sesión y perfil |
+| Carrito de compras | Agrega, acumula y quita productos (con sesión) |
+| PQRSF | Radica peticiones, quejas, reclamos, sugerencias y felicitaciones |
 
 ## Requisitos
-Node.js 22.5 o superior (incluye SQLite, no hay que instalar base de datos).
+Node.js 22.5 o superior (incluye SQLite; no hay que instalar base de datos).
 
 ## Ejecutar
 ```
 npm install
 npm start          # http://localhost:3000
-npm test           # 16 pruebas unitarias / de módulo
+npm test           # 16 pruebas automáticas
 ```
-Variables opcionales en `.env` (ver `.env.example`): `PORT`, `DB_FILE`, `TOKEN_SECRET`.
-La base `data/dressfresh.db` se crea sola con datos de ejemplo.
+En Windows también se puede hacer doble clic en `iniciar.bat`.
 
-## API
-| Módulo | Rutas |
-|---|---|
-| Catálogo | GET /api/catalogo?categoria=&busqueda=&promocion=1 · GET /api/catalogo/categorias · GET /api/catalogo/:id |
-| Usuarios | POST /api/usuarios/registro · POST /api/usuarios/login · GET /api/usuarios/perfil (sesión) |
-| Carrito (sesión) | GET /api/carrito · POST /api/carrito · DELETE /api/carrito/:idProducto |
-| PQRSF | POST /api/pqrsf · GET /api/pqrsf/:id |
+## Estructura
+- `src/` código del servidor (módulos por capas: routes, service, repository)
+- `public/` interfaz web
+- `test/` pruebas automáticas
+- `base_de_datos/dressfresh_bd.sql` script de la base de datos MySQL
+- `docs/` manual técnico e informe de módulos integrados
 
-## Pendiente (siguientes iteraciones)
-CRUD de productos para el administrador, recuperar contraseña, pedido y pago, panel PQRSF.
+## Variables (opcional)
+`PORT`, `DB_FILE`, `TOKEN_SECRET` (ver `.env.example`).
+
+## Pendiente
+Pedido y pago, administración de productos y panel de respuesta de PQRSF.
